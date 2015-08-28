@@ -42,6 +42,12 @@ $(function() {
          * in the allFeeds object and ensures it has a name defined
          * and that the name is not empty.
          */
+         it('has a name property that is not empty', function() {
+            allFeeds.forEach(function(element, index) {
+                expect(element.hasOwnProperty('name')).toBe(true);
+                expect(element['name'].length > 0).toBe(true);
+            });
+         });
     });
 
 
