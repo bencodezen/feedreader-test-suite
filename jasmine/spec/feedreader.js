@@ -57,6 +57,9 @@ $(function() {
          * the CSS to determine how we're performing the
          * hiding/showing of the menu element.
          */
+         it('hides by default', function() {
+            expect(document.getElementsByTagName('body')[0].classList.contains('menu-hidden')).toBe(true);
+         });
 
          /* TODO: Write a test that ensures the menu changes
           * visibility when the menu icon is clicked. This test
