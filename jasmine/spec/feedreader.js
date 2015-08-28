@@ -52,13 +52,28 @@ $(function() {
 
     /* TODO: Write a new test suite named "The menu" */
     describe('The Menu', function() {
+        var $body,
+            $menuIcon,
+            hideMenuClass,
+            spyEvent;
+
+        beforeEach(function() {
+            // Store elements in variables to minimize processing
+            $menuIcon = $('.menu-icon-link');
+            $body = $('body')[0];
+            hideMenuClass = 'menu-hidden';
+            
+            // Allow Jasmine to watch for the click event on the link
+            spyEvent = spyOnEvent($menuIcon, 'click');
+        });
+
         /* TODO: Write a test that ensures the menu element is
          * hidden by default. You'll have to analyze the HTML and
          * the CSS to determine how we're performing the
          * hiding/showing of the menu element.
          */
          it('hides by default', function() {
-            expect(document.getElementsByTagName('body')[0].classList.contains('menu-hidden')).toBe(true);
+            expect($body.classList.contains(hideMenuClass)).toBe(true);
          });
 
          /* TODO: Write a test that ensures the menu changes
@@ -66,6 +81,17 @@ $(function() {
           * should have two expectations: does the menu display when
           * clicked and does it hide when clicked again.
           */
+          it('changes visibility when the icon is clicked', function() {
+            // Tests that the menu displays when clicked
+            $menuIcon.click();
+            expect('click').toHaveBeenTriggeredOn($menuIcon);
+            expect(spyEvent).toHaveBeenTriggered();
+            expect($body.classList.contains(hideMenuClass)).toBe(false);
+
+            // Tests that the menu hides when clicked again
+            $menuIcon.click();
+            expect($body.classList.contains(hideMenuClass)).toBe(true);
+          });
     });
 
     /* TODO: Write a new test suite named "Initial Entries" */
