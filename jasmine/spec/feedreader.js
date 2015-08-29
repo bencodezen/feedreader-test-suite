@@ -78,18 +78,16 @@ $(function() {
       expect(allFeeds.length > 1).toBe(true);
 
       loadFeed(0, function() {
-        originalContent = $('.entry h2')[0];
-        console.log(originalContent);
+        originalContent = $('.entry');
         loadFeed(1, function() {
-          newContent = $('.entry h2')[0];
-          console.log(newContent);
+          newContent = $('.entry');
           done();
         });
       });
     });
 
     it('should contain new content when the feed channel changes', function() {
-      expect(originalContent !== newContent).toBe(true);
+      expect(originalContent).not.toEqual(newContent);
     });
   });
 }());
