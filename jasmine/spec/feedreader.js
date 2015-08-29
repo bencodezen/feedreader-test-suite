@@ -6,10 +6,10 @@ $(function() {
     });
 
     it('has a URL property that is not empty', function() {
-       allFeeds.forEach(function(element, index) {
-           expect(element.hasOwnProperty('url')).toBe(true);
-           expect(element['url']).toBeDefined();
-       });
+      allFeeds.forEach(function(element, index) {
+        expect(element.hasOwnProperty('url')).toBe(true);
+        expect(element['url']).toBeDefined();
+      });
     });
 
     it('has a name property that is not empty', function() {
@@ -57,7 +57,7 @@ $(function() {
     // Ensure that loadFeed has completed running before each test
     beforeEach(function(done) {
       loadFeed(0, function() {
-          done();
+        done();
       });
     });
 
