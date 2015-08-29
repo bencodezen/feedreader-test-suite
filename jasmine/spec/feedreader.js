@@ -57,9 +57,7 @@ $(function() {
   describe('Initial Entries', function() {
     // Ensure that loadFeed has completed running before each test
     beforeEach(function(done) {
-      loadFeed(0, function() {
-        done();
-      });
+      loadFeed(0, done);
     });
 
     it('should contain at least one entry', function() {
