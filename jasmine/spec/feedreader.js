@@ -111,7 +111,6 @@ $(function() {
          });
 
          it('should contain at least one entry', function() {
-            loadFeed(0);
             expect($('.entry-link').length > 0).toBe(true);
          });
     });
@@ -122,5 +121,28 @@ $(function() {
          * by the loadFeed function that the content actually changes.
          * Remember, loadFeed() is asynchronous.
          */
+         var originalContent,
+             newContent;
+
+         // Ensure that loadFeed has completed running before each test
+         beforeEach(function(done) {
+
+            // Check to make sure there is more than one feed
+            expect(allFeeds.length > 1).toBe(true);
+
+            loadFeed(0, function() {
+                originalContent = $('.entry h2')[0];
+                console.log(originalContent);
+                loadFeed(1, function() {
+                    newContent = $('.entry h2')[0];
+                    console.log(newContent);
+                    done();
+                });
+            });
+         });
+
+         it('should contain new content when the feed channel changes', function() {
+            expect(originalContent !== newContent).toBe(true);
+         });
     });
 }());
