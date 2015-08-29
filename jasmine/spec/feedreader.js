@@ -30,7 +30,7 @@ $(function() {
     beforeEach(function() {
       // Store elements in variables to minimize processing
       $menuIcon = $('.menu-icon-link');
-      $body = $('body')[0];
+      $body = $('body');
       hideMenuClass = 'menu-hidden';
       
       // Allow Jasmine to watch for the click event on the link
@@ -38,7 +38,7 @@ $(function() {
     });
 
     it('hides by default', function() {
-      expect($body.classList.contains(hideMenuClass)).toBe(true);
+      expect($body.hasClass(hideMenuClass)).toBe(true);
     });
 
     it('changes visibility when the icon is clicked', function() {
@@ -46,11 +46,11 @@ $(function() {
       $menuIcon.click();
       expect('click').toHaveBeenTriggeredOn($menuIcon);
       expect(spyEvent).toHaveBeenTriggered();
-      expect($body.classList.contains(hideMenuClass)).toBe(false);
+      expect($body.hasClass(hideMenuClass)).toBe(false);
 
       // Tests that the menu hides when clicked again
       $menuIcon.click();
-      expect($body.classList.contains(hideMenuClass)).toBe(true);
+      expect($body.hasClass(hideMenuClass)).toBe(true);
     });
   });
 
