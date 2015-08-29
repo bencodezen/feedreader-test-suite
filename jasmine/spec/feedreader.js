@@ -78,9 +78,9 @@ $(function() {
       expect(allFeeds.length > 1).toBe(true);
 
       loadFeed(0, function() {
-        originalContent = $('.entry');
+        originalContent = $('.entry').html();
         loadFeed(1, function() {
-          newContent = $('.entry');
+          newContent = $('.entry').html();
           done();
         });
       });
