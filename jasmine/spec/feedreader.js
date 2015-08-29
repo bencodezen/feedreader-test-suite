@@ -9,6 +9,7 @@ $(function() {
       allFeeds.forEach(function(element, index) {
         expect(element.hasOwnProperty('url')).toBe(true);
         expect(element['url']).toBeDefined();
+        expect(element['url'].length > 0).toBe(true);
       });
     });
 
